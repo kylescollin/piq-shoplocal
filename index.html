@@ -1,0 +1,100 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>ShopLocal Integration - PlaceIQ</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" /> -->
+	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.1.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.1.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.3.1.css">
+	<link rel="stylesheet" type="text/css" href="css/piq-style.css">
+	<!-- <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" /> -->
+	<!-- <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>-->
+	<!-- <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>-->
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.3.1.js"></script>
+	<script src="js/piq-script.js"></script>
+	<!-- <script src="js/iscroll.js"></script>-->
+</head> 
+
+<body> 
+	<div data-role='page' id='landing-page'>
+		<div data-role='header' data-position='fixed' data-them='a'>
+			<h4>Placeiq</h4>
+			<!-- <br> -->
+			<!-- <img src="img/placeiq-logo.png"></img> -->
+			<!-- <div data-role="navbar" data-theme="a">
+				<ul>
+					<li><a href="#stores-page" data-role="button" data-transition="slide">stores</a></li>
+				</ul>		
+			</div> -->	
+		</div>
+
+		<div data-role='content' style="height:100%;width:300px;" data-them='a'>
+			<form id='zipcodeForm' data-ajax='false' method='post' action='#stores-page' data-transition='slide'>
+				<fieldset>
+					<div data-role='fieldcontain'>
+						<label for='zipcode'>Zipcode</label>
+						<input id='zipcodeInput' type='text' name='zipcode' value='94133' />
+						<br>
+						<input id='zipcodeSubmit' type='submit' value='Get Local Stores'/>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+
+		<div data-role='footer' data-position='fixed' data-them='a'>
+			<h4>Shoplocal Integration</h4>
+		</div>
+	</div>
+
+	<div data-role='page' id='stores-page'>
+		<div data-role='header' data-them='a'>
+			<h4>Stores List</h4>
+			<a href='#landing-page' data-rel='back' data-transition='slide'>Landing Page</a>
+		</div>
+
+		<div data-role='content' class='ui-content' data-them='a'>	
+			<div id="store-list">
+			</div>	
+		</div>
+		<div data-role='footer' data-position='fixed' data-them='a'>
+			<h4>PlaceIQ, INC.</h4>
+		</div>
+	</div>
+
+	<div data-role='page' id='listings-page'>
+		<?php $zipcode = $_POST['zipcode']?>
+		<div data-role='header' data-them='a'>
+			<h4>Store Info</h4>
+			<a href='#stores-page' data-rel='back' data-transition='slide'>Stores</a>
+		</div>
+		<div data-role='content' class='ui-content' data-them='a'>	
+			<div id='store-info'></div>
+			<div data-role='list-divider'></div>
+
+			<div id="listings"></div>
+		</div>
+		<div data-role='footer' data-position='fixed' data-them='a'>
+			<h4>PlaceIQ, INC.</h4>
+		</div>	
+	</div>
+
+	<div data-role='page' id='offer-page'>
+		<div data-role='header' data-them='a'>
+			<h4>Offer Info</h4>
+			<a href='#listings-page' data-rel='back' data-transition='slide'>Stores</a>
+			<!-- <a href='#listings-page' data-transition='slide' data-direction="reverse" data-iconpos="notext" onclick="history.go(-1);">Stores</a> -->
+		</div>
+		<div data-role='content' data-them='a'>
+			<div id='offer-store-info'></div>
+			<br>
+
+			<div id='offer-listing-info'></div>
+	</div>	
+	<div data-role='footer' data-position='fixed' data-them='a'>
+		<h4>PlaceIQ, INC.</h4>
+	</div>		
+</div>
+</body>
+</html>
